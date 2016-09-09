@@ -5,5 +5,15 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shopcart\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shopcart\\": "tests/"
+        }
     }
 }
