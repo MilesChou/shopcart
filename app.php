@@ -12,7 +12,7 @@ $app = new \Slim\App($container);
 
 $app->get('/hello/{name}', function (Request $request, Response $response) {
     $name = $request->getAttribute('name');
-    $user = new Creative\User($name);
+    $user = new Shopcart\User($name);
     $greeting = $user->sayHello();
 
     $response->getBody()->write($greeting);
