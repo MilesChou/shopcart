@@ -1,0 +1,16 @@
+web:
+  image: php:7.0-apache
+  ports:
+    - 8080:80
+  links:
+    - database
+  volumes:
+    - .:/var/www/html
+
+database:
+  image: mysql:5.5
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: password
+    MYSQL_DATABASE: default

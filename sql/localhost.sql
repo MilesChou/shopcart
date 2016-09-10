@@ -18,8 +18,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- 資料庫: `shopcart`
 --
-CREATE DATABASE `shopcart` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `shopcart`;
+CREATE DATABASE `default` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `default`;
 
 -- --------------------------------------------------------
 

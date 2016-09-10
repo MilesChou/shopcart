@@ -19,7 +19,7 @@
 	 * 定義工作目錄(PATH)與虛擬目錄(URL)
 	 */
 	//$_ROOT_PATH_ADDTION = (PHP_OS == 'Linux')?'/':Null;
-	define('ROOT_PATH', dirname($_SERVER['SCRIPT_FILENAME']) . '/');
+	define('ROOT_PATH', __DIR__ . '/');
 	define('ROOT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/');
 	/**
 	 * 定義其他目錄
@@ -29,7 +29,7 @@
 //	$include_path[] = get_include_path();
 //	$include_path[] = CLASS_PATH;
 //	set_include_path(join(PATH_SEPARATOR, $include_path));
-	
+
 //	function __autoload($class_name) {
 //		$class = str_replace('_','/',$class_name);
 //		require_once $class . '.php';
@@ -39,10 +39,10 @@
 	 */
 	define('DB_TYPE', 'mysql');
 	define('DB_CHARSET', 'utf8');
-	define('DB_HOST', 'localhost');
-	define('DB_USER', 'shopcart');
-	define('DB_PASS', 'shopcart');
-	define('DB_NAME', 'shopcart');
+	define('DB_HOST', 'database');
+	define('DB_USER', 'root');
+	define('DB_PASS', 'password');
+	define('DB_NAME', 'default');
 
 	/**
 	 * 設定樣版
@@ -78,6 +78,6 @@
 		'debug' => DEBUG_MODE,
 		'per_page' => PER_PAGE,
 		'per_top_list' => PER_TOP_LIST));
-		
-	
+
+
 ?>
