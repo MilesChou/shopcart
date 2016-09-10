@@ -25,4 +25,7 @@
             <directory>./src/</directory>
         </whitelist>
     </filter>
+    <php>
+        <server name="SERVER_NAME" value="127.0.0.1"/>
+    </php>
 </phpunit>

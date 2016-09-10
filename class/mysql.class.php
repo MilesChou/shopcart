@@ -50,7 +50,7 @@ class db {
 	 * 連線方法
 	 */
 	protected function _connect() {
-		$this->_connection = mysql_connect($this->_config['HOST'],
+		$this->_connection = mysqli_connect($this->_config['HOST'],
 			$this->_config['USER'],
 			$this->_config['PASS']) or die('Error with MySQL connection');
 	}
@@ -58,15 +58,15 @@ class db {
 	 * 斷線方法
 	 */
 	protected function _disconnect() {
-		mysql_close($this->_connection);
+		mysqli_close($this->_connection);
 	}
 	/**
 	 * 初始化方法
 	 */
 	public function init() {
-		$this->_fetch_mode = MYSQL_ASSOC;
-		mysql_query("SET NAMES '" . $this->_config['CHARSET'] . "'");
-		mysql_select_db ($this->_config['DATABASE'] , $this->_connection) or die('Error with MySQL db select');
+		$this->_fetch_mode = MYSQLI_ASSOC;
+		mysqli_query($this->_connection, "SET NAMES '" . $this->_config['CHARSET'] . "'");
+		mysqli_select_db($this->_connection, $this->_config['DATABASE']) or die('Error with MySQL db select');
 	}
 	/**
 	 * 基本查詢方法
@@ -74,9 +74,9 @@ class db {
 	 * 如為SELECT查詢方法則會return一個resource
 	 */
 	public function query($SQL) {
-		if (!$resource = mysql_query($SQL, $this->_connection)) {
+		if (!$resource = mysqli_query($this->_connection, $SQL)) {
 			if ($this->_debug) {
-				echo mysql_errno().": ".mysql_error()."<BR>";
+				echo mysqli_errno($this->_connection).": ".mysqli_error($this->_connection)."<BR>";
 				die ("MySQL Query Error");
 			}
 			else {
@@ -94,7 +94,7 @@ class db {
 	public function all($SQL) {
 		$data = '';
 		$this->query($SQL);
-		while( $row = mysql_fetch_array($this->_resource, $this->_fetch_mode) ){
+		while( $row = mysqli_fetch_array($this->_resource, $this->_fetch_mode) ){
 			if($row) {
 				$data[] = $row;
 			}
@@ -111,7 +111,7 @@ class db {
 	 */
 	public function row($SQL) {
 		$this->query($SQL);
-		return mysql_fetch_array($this->_resource, $this->_fetch_mode);
+		return mysqli_fetch_array($this->_resource, $this->_fetch_mode);
 	}
 	/**
 	 * 查詢方法-COL
@@ -120,7 +120,7 @@ class db {
 	 */
 	public function col($SQL) {
 		$this->query($SQL);
-		return mysql_fetch_array($this->_resource, $this->_fetch_mode);
+		return mysqli_fetch_array($this->_resource, $this->_fetch_mode);
 	}
 	/**
 	 * 查詢方法-One
@@ -129,7 +129,7 @@ class db {
 	 */
 	public function one($SQL) {
 		$this->query($SQL);
-		$row = mysql_fetch_array($this->_resource, $this->_fetch_mode);
+		$row = mysqli_fetch_array($this->_resource, $this->_fetch_mode);
 		return array_pop($row);
 	}
 	/**
@@ -137,7 +137,7 @@ class db {
 	*/
 	public function get_num_rows() {
 		if ($this->_resource === Null) {return Null;}
-		return mysql_num_rows($this->_resource);
+		return mysqli_num_rows($this->_resource);
 	}
 	/**
 	 * 查詢前一個INSERT動作的ID
@@ -151,7 +151,7 @@ class db {
 	 * 傳入一字串，回傳一加入escape字元的字串
 	 */
 	public function escape($str) {
-		return mysql_real_escape_string($str);
+		return mysqli_real_escape_string($this->_connection, $str);
 	}
 	/**
 	 * 自動產生Insert SQL方法
