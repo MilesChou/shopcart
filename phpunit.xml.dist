@@ -23,6 +23,11 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory>./src/</directory>
+            <file>./class/mysql.class.php</file>
+            <file>./class/shop.class.php</file>
+            <file>./admin.php</file>
+            <file>./app.php</file>
+            <file>./index.php</file>
         </whitelist>
     </filter>
     <php>

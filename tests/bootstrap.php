@@ -16,3 +16,8 @@ $capsule->addConnection([
 ], 'default');
 
 $capsule->setAsGlobal();
+
+
+$sql = \file_get_contents(__DIR__ . '/../sql/localhost.sql');
+
+Capsule::connection()->getPdo()->exec($sql);

@@ -9,22 +9,16 @@ class UserWebTest extends TestCase
 {
     use SlimCaseTrait;
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         $app = require __DIR__ . '/../app.php';
         $this->setApp($app);
-
-        $sql = \file_get_contents(__DIR__ . '/../sql/localhost.sql');
-
-        Capsule::connection()->getPdo()->exec($sql);
     }
 
-    public function tearDown() {
-        // Clear DB
-        Capsule::schema()->drop('order');
-        Capsule::schema()->drop('product');
-        Capsule::schema()->drop('product_category');
+    public function tearDown()
+    {
     }
 
     public function testIndexPhp()
