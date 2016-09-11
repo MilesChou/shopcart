@@ -1,7 +1,15 @@
+sudo: required
+
+services:
+  - docker
+
 language: php
 
 php:
   - 7.0
+
+before_install:
+  - docker run -d --name database -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=default mysql:5.5
 
 script:
   - composer install
