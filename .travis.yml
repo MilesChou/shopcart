@@ -10,6 +10,7 @@ php:
 
 before_install:
   - docker run -d --name database -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=default mysql:5.5
+  - sleep 10
 
 script:
   - composer install
