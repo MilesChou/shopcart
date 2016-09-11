@@ -4,6 +4,10 @@
 require_once('config.php');
 // 引用shop類別檔
 require_once(CLASS_PATH . 'shop.class.php');
+
+// bootstrap
+include __DIR__ . '/init.php';
+
 // 建立shop物件
 $shop = new shop (DEBUG_MODE);
 // $_GET['act'] 如沒有設定的話，預設值為'main'

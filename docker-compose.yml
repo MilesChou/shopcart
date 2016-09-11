@@ -1,7 +1,5 @@
 web:
   image: php:7.0-apache
-  ports:
-    - 8080:80
   links:
     - database
   volumes:
