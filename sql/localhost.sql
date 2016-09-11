@@ -1,31 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 3.3.10
--- http://www.phpmyadmin.net
---
--- 主機: localhost
--- 建立日期: May 16, 2011, 02:40 PM
--- 伺服器版本: 5.1.41
--- PHP 版本: 5.3.2-1ubuntu4.9
-
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- 資料庫: `shopcart`
---
-CREATE DATABASE `default` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `default`;
-
--- --------------------------------------------------------
-
---
--- 資料表格式： `order`
---
 
 CREATE TABLE IF NOT EXISTS `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序號',
@@ -42,10 +15,6 @@ CREATE TABLE IF NOT EXISTS `order` (
   UNIQUE KEY `sn` (`sn`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='訂單資料表';
 
---
--- 資料表格式： `product`
---
-
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序號',
   `category` int(11) NOT NULL COMMENT '分類',
@@ -60,28 +29,11 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='產品資料表';
 
--- --------------------------------------------------------
-
---
--- 資料表格式： `product_category`
---
-
 CREATE TABLE IF NOT EXISTS `product_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序號',
   `title` varchar(30) NOT NULL COMMENT '名稱',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='產品分類資料表' AUTO_INCREMENT=1 ;
 
---
--- 列出以下資料庫的數據： `product_category`
---
-
 INSERT INTO `product_category` (`id`, `title`) VALUES
 (0, '未分類');
-
-
-CREATE USER 'shopcart'@'localhost' IDENTIFIED BY  '***';
-
-GRANT USAGE ON * . * TO  'shopcart'@'localhost' IDENTIFIED BY  '***' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
-
-GRANT ALL PRIVILEGES ON  `shopcart` . * TO  'shopcart'@'localhost';

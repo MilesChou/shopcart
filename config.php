@@ -1,10 +1,6 @@
 <?php
 	session_start();
-	/**
-	 * 定義管理員帳號密碼
-	 */
-	$user = 'shopcart';
-	$pass = md5('000000');
+
 	/**
 	 * 除錯模式開啟與關閉
 	 * 使用布林
@@ -39,29 +35,15 @@
 	 */
 	define('DB_TYPE', 'mysql');
 	define('DB_CHARSET', 'utf8');
-	define('DB_HOST', 'database');
+	define('DB_HOST', '127.0.0.1');
 	define('DB_USER', 'root');
 	define('DB_PASS', 'password');
 	define('DB_NAME', 'default');
 
 	/**
-	 * 設定樣版
-	 */
-	include(CLASS_PATH . "Smarty/Smarty.class.php");
-	$tpl = new Smarty;
-	$tpl->template_dir = ROOT_PATH . '/templates/';
-	$tpl->compile_dir = ROOT_PATH . '/templates/compile/';
-	$tpl->config_dir = ROOT_PATH . '/templates/configs/';
-	$tpl->cache_dir = ROOT_PATH . '/templates/cache/';
-	$tpl->caching = False;
-	$tpl->auto_literal = False;
-	$tpl->left_delimiter = '<%';
-	$tpl->right_delimiter = '%>';
-
-	/**
 	 * 引用資料庫
 	 */
-	include(CLASS_PATH . "mysql.class.php");
+	include_once(CLASS_PATH . "mysql.class.php");
 
 	/**
 	 * 定義商品一頁幾個項目
@@ -71,13 +53,3 @@
 	 * 定義後台首頁排行項目數量
 	 */
 	define('PER_TOP_LIST', 5);
-	/**
-	 * 輸出設定至樣版config變數
-	 */
-	$tpl->assign('config', array(
-		'debug' => DEBUG_MODE,
-		'per_page' => PER_PAGE,
-		'per_top_list' => PER_TOP_LIST));
-
-
-?>
